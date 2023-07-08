@@ -1,0 +1,142 @@
+{
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "npmScope": "toeverything",
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx-cloud",
+      "options": {
+        "cacheableOperations": ["build", "test", "e2e", "lint"],
+        "accessToken": "YmQ2NTg1ODktZTk5Mi00YzhiLTk2ZmUtNWQzMDg0NDBkOWM3fHJlYWQtb25seQ=="
+      }
+    }
+  },
+  "affected": {
+    "defaultBase": "master"
+  },
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "sharedGlobals": [
+      "{workspaceRoot}/tsconfig.json",
+      "{workspaceRoot}/nx.json"
+    ],
+    "production": [
+      "default",
+      "!{projectRoot}/.eslintrc.json",
+      "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)"
+    ]
+  },
+  "targetDefaults": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [
+        "{projectRoot}/dist",
+        "{projectRoot}/build",
+        "{projectRoot}/out",
+        "{projectRoot}/storybook-static",
+        "{workspaceRoot}/packages/i18n/src/i18n-generated.ts"
+      ],
+      "inputs": [
+        {
+          "runtime": "node -v"
+        },
+        {
+          "env": "BUILD_TYPE"
+        },
+        {
+          "env": "ENABLE_BOOKMARK_OPERATION"
+        },
+        {
+          "env": "ENABLE_PLUGIN"
+        },
+        {
+          "env": "ENABLE_ALL_PAGE_FILTER"
+        },
+        {
+          "env": "ENABLE_TEST_PROPERTIES"
+        },
+        {
+          "env": "ENABLE_LEGACY_PROVIDER"
+        },
+        {
+          "env": "ENABLE_BC_PROVIDER"
+        },
+        {
+          "env": "ENABLE_DEBUG_PAGE"
+        },
+        {
+          "env": "CHANGELOG_URL"
+        },
+        {
+          "env": "ENABLE_PRELOADING"
+        },
+        {
+          "env": "API_SERVER_PROFILE"
+        },
+        {
+          "env": "ENABLE_SQLITE_PROVIDER"
+        }
+      ]
+    },
+    "e2e": {
+      "outputs": ["{workspaceRoot}/.nyc_output", "{projectRoot}/test-results"],
+      "inputs": [
+        {
+          "runtime": "node -v"
+        },
+        {
+          "runtime": "yarn playwright --version"
+        }
+      ]
+    },
+    "e2e:coverage": {
+      "outputs": ["{workspaceRoot}/.nyc_output", "{projectRoot}/test-results"],
+      "inputs": [
+        {
+          "runtime": "node -v"
+        },
+        {
+          "runtime": "yarn playwright --version"
+        }
+      ]
+    },
+    "test": {
+      "outputs": ["{workspaceRoot}/.nyc_output"],
+      "inputs": [
+        {
+          "env": "NATIVE_TEST"
+        },
+        {
+          "env": "ENABLE_PRELOADING"
+        },
+        {
+          "env": "COVERAGE"
+        }
+      ]
+    },
+    "test:ui": {
+      "outputs": ["{workspaceRoot}/.nyc_output"],
+      "inputs": [
+        {
+          "env": "NATIVE_TEST"
+        },
+        {
+          "env": "ENABLE_PRELOADING"
+        },
+        {
+          "env": "COVERAGE"
+        }
+      ]
+    },
+    "test:coverage": {
+      "outputs": ["{workspaceRoot}/.nyc_output"],
+      "inputs": [
+        {
+          "env": "NATIVE_TEST"
+        },
+        {
+          "env": "ENABLE_PRELOADING"
+        }
+      ]
+    }
+  }
+}

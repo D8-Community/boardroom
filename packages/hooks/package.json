@@ -1,0 +1,12 @@
+{
+  "name": "@toeverything/hooks",
+  "exports": {
+    "./*": "./src/*"
+  },
+  "private": true,
+  "dependencies": {
+    "@affine/env": "workspace:*",
+    "@toeverything/y-indexeddb": "workspace:*"
+  },
+  "version": "0.7.0-canary.38"
+}

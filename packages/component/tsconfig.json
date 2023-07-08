@@ -1,0 +1,30 @@
+{
+  "extends": "../../tsconfig.json",
+  "exclude": ["lib"],
+  "include": ["./src/**/*", "./src/**/*.json"],
+  "compilerOptions": {
+    "composite": true,
+    "noEmit": false,
+    "outDir": "lib",
+    "types": ["@affine/env"]
+  },
+  "references": [
+    {
+      "path": "../debug"
+    },
+    {
+      "path": "../i18n"
+    },
+    {
+      "path": "../jotai"
+    },
+    {
+      "path": "../hooks"
+    },
+    {
+      "path": "../plugin-infra"
+    },
+    { "path": "../workspace" },
+    { "path": "../../tests/fixtures" }
+  ]
+}

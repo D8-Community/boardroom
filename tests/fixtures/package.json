@@ -1,0 +1,7 @@
+{
+  "name": "@affine-test/fixtures",
+  "exports": {
+    "./*": "./*"
+  },
+  "version": "0.7.0-canary.38"
+}
